@@ -20,20 +20,28 @@ def print_query(view_name:str):
     cursor.execute(field_names)
     headings = list(sum(cursor.fetchall(),()))
     # Print the results in a table with the headings
-    codebox('This shows the stats on the players you choose from', 'Here are the results',tabulate(results,headings))
+    codebox('Here are the stats for the players', 'Here are the results',tabulate(results,headings))
     db.close()
-
+'''Football stats'''
+#showing options to choose from
 while True:
     msg ="Chooce a query"
     title = "Footballers"
-    choices = ["Argentina Players", "Portugal Players", "Over 100 career goals & assists", "Midfielders", "Left Footed Forwards", "Right Footed Forwards", "Top 10 Goal Scorers", "PSG players", "Real Madrid Players", "World Cup Winners", "Under 30 y/o Players"]
+    choices = ["Argentina Players", "Portugal Players", "England Players", "Turyike Players", "France Players", "Brazil Players", "Spain Players", "Over 100 career goals & assists", "Midfielders", "Left Footed Forwards", "Right Footed Forwards", "Top 10 Goal Scorers", "PSG players", "Real Madrid Players", "Chelsea Players", "Arsenal Players", "World Cup Winners", "Under 30 y/o Players", "Exit"]
     choice = choicebox(msg, title, choices)
+#making it show the information depending on which option you selected.
     if choice == "Argentina Players":
         print_query('argentina_players')
     elif choice == "Portugal Players":
         print_query('portugal_players')
-    elif choice == "Over 100 career goals & assists":
-        print_query('goal_contribation')
+    elif choice == "England Players":
+        print_query("england_players")
+    elif choice == "Turyike Players":
+        print_query("turyike_players")
+    elif choice == "France Players":
+        print_query("france_players")
+    elif choice == "Brazil Players":
+        print_query('brazil_players')
     elif choice == "Midfielders":
         print_query('midfielders')
     elif choice == "Left Footed Forwards":
@@ -46,8 +54,16 @@ while True:
         print_query('paris_saint-germain')
     elif choice == "Real Madrid Players":
         print_query('real_madrid')
+    elif choice == "Chelsea Players":
+        print_query('chelsea')
+    elif choice == "Arsenal Players":
+        print_query('arsenal_players')
     elif choice == "World Cup Winners":
         print_query('world_cups_winners')
+    elif choice == 'Under 30 y/o Players':
+        print_query("young_players")
+    elif choice == "Exit":
+        break
     elif choice == None:
         break
 
